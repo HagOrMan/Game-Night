@@ -20,7 +20,7 @@ flowchart TB
   G3{{"Gate: touch works blind<br/>all 3 roles playable on iPhone and Android"}}
   P4["<b>Phase 4 · Jam Room</b><br/>Tone.js, quantize, WebRTC"]
   G4{{"Gate: the band stays tight<br/>4 phones jam for 5 min<br/>with no dropouts or stuck notes"}}
-  P5["<b>Phase 5 · Expand</b><br/>Bluff Fill, Odd One Out, Ballpark, Share results"]
+  P5["<b>Phase 5 · Expand</b><br/>Fit Check first, then Bluff Fill, Odd One Out, Ballpark, Share results"]
 
   P0 --> G0 --> P1 --> G1 --> P2 --> G2 --> P3 --> G3 --> P4 --> G4 --> P5
   style G1 stroke:#2F6FEB,stroke-width:3px
@@ -35,7 +35,7 @@ The highlighted gate, a first real game night, is the one that proves the platfo
 | 2. Slide Roulette  | Photo pool script, photo/text rotation and option sets, picker and presenter phones, Skip, loop pairing, reactions                                                                                                             | Photos never miss |
 | 3. Signal Chain    | Black-screen input canvas, 3 tasks, Relay noise, role rotation                                                                                                                                                                 | Touch works blind |
 | 4. Jam Room        | Tone.js instruments, quantized scheduling, WebRTCTransport, lanes visual                                                                                                                                                       | The band stays tight |
-| 5. Expand          | Bluff Fill, Odd One Out, Ballpark; shared voting module; automated showcase screenshots; Share results (`shares` table, `/api/share`, `/s/[id]`) | — |
+| 5. Expand          | Fit Check first (Dress up and Name the fit, wardrobe pipeline, shared voting module and free-text input), then Bluff Fill, Odd One Out, Ballpark; automated showcase screenshots; Share results (`shares` table, `/api/share`, `/s/[id]`) | — |
 
 ## How we work
 
@@ -49,8 +49,8 @@ The highlighted gate, a first real game night, is the one that proves the platfo
 
 | Need | Where it installs | When | Status |
 | ---- | ----------------- | ---- | ------ |
-| Node.js 26 LTS | Global, via fnm (currently 22.2.0) | Before step 0.1 | 👤 Needs approval |
-| pnpm 12.16 | Global (currently 12.6.0); `packageManager` pins it through Corepack | Before step 0.1 | 👤 Needs approval |
+| Node.js 26 LTS | fnm; selected per repo by `.node-version`, the fnm default stays 22.2.0 | Before step 0.1 | Approved |
+| pnpm 12.16 | Downloaded by the installed pnpm (12.6.0) from the `packageManager` field | Step 0.1 | Approved |
 | All npm packages (Next, Turbo, Vitest, fast-check, Zod, ...) | Repo dev/runtime dependencies | Step 0.1 onward | Allowed |
 | Playwright browsers | User cache, outside the repo (~500 MB) | Phase 1 | 👤 Needs approval |
 | Supabase CLI | Repo dev dependency (`supabase`) | Phase 1 | Allowed |
@@ -189,7 +189,9 @@ See [its spec](../games/jam-room/SPEC.md). Tone.js instruments, quantized schedu
 
 ## Phase 5 — Expand
 
-Bluff Fill, Odd One Out, Ballpark (see [IDEAS.md](IDEAS.md)); the shared voting module; `pnpm screenshots` with showcase states; Share results ([ARCHITECTURE.md](ARCHITECTURE.md#share-results-later-not-mvp)).
+Fit Check comes first ([D-152](DECISIONS.md)): see [its spec](../games/fit-check/SPEC.md). Both variants, Dress up and Name the fit, are in its MVP ([D-150](DECISIONS.md)). It needs the wardrobe asset pipeline (`wardrobe:build`) and a launch wardrobe of about 15 items each for top, bottom and full-length, and it builds the shared voting module and free-text input that the later games reuse.
+
+Then Bluff Fill, Odd One Out, Ballpark (see [IDEAS.md](IDEAS.md)); `pnpm screenshots` with showcase states; Share results ([ARCHITECTURE.md](ARCHITECTURE.md#share-results-later-not-mvp)).
 
 ## Testing
 

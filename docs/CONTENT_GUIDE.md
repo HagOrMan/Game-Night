@@ -41,7 +41,7 @@ Runs in CI and before every commit that touches content. It rejects:
 
 ## Free text
 
-Free-text games (Bluff Fill, Majority Rules, Who Said It) mask profanity in Family mode only.
+Free-text games (Fit Check's Name the fit, Bluff Fill, Majority Rules, Who Said It) mask profanity in Family mode only.
 
 ## Writing content
 

@@ -11,12 +11,12 @@ Two moments from history appear on screen and everyone guesses, on their phone, 
 | Field          | Value                                          |
 | -------------- | ---------------------------------------------- |
 | Modes          | Party                                          |
-| Players        | 2–12                                           |
+| Players        | 1–12 (1 is a solo practice run)                |
 | Session length | About 1.5 min per round; 8–12 min for 5 rounds |
 | Devices        | Host screen; phones                            |
 | Late join      | Allow; starts with 0 points                    |
 | Key roles      | None                                           |
-| Content modes  | Single mode; picker hidden (see open questions) |
+| Content modes  | Family only; picker hidden                     |
 
 ## How to play
 
@@ -48,7 +48,7 @@ That example is 1368 to 1913, a 545-year gap.
 | `regions` | all | multi-select |
 | `categories` | all | multi-select |
 | `scoring` | relative | relative, rank |
-| `orderBonus` | — | on, off |
+| `orderBonus` | on | on, off |
 
 ## Scoring (relative mode)
 
@@ -56,7 +56,7 @@ That example is 1368 to 1913, a 545-year gap.
 \text{relErr} = \frac{|g - a|}{\max(a,\ 20)} \qquad \text{points} = \operatorname{round}\big(1000 \cdot \max(0,\ 1 - \text{relErr})^2\big)
 ```
 
-Here g is the guess and a the actual gap. The floor of 20 keeps tiny gaps from being brutal; squaring rewards being close more than being roughly right. Extras: +300 bullseye when within 1% (at least 1 year), +150 for the closest guess in the round (shared on ties), +100 for the correct order when `orderBonus` is on. No guess scores 0.
+Here g is the guess and a the actual gap. The floor of 20 keeps tiny gaps from being brutal; squaring rewards being close more than being roughly right. Extras: +300 bullseye when within 1% (at least 1 year), +150 for the closest guess in the round (shared on ties), +200 for the correct order when `orderBonus` is on. No guess scores 0.
 
 | Guess for a 545-year gap | Off by | Base points         |
 | ------------------------ | ------ | ------------------- |
@@ -96,6 +96,7 @@ interface HistEvent {
   difficulty: 1 | 2 | 3;
   fact?: string; // one line shown at reveal
   source: string; // URL used to verify the year
+  rating: "family"; // the game is Family-only, so every event is rated family
 }
 ```
 
@@ -116,22 +117,14 @@ Gaps of at least 5 years; spread across buckets (under 50, 50–200, 200–800, 
 
 - A phone reconnects mid-guess and gets its unsent draft back from localStorage.
 - A guess over 10,000 is clamped with a gentle "that's before writing" note.
-- One player: allowed as a solo practice run (overrides the 2-player minimum).
+- One player: a solo practice run.
 
 ## Scope
 
-**MVP:** 5 rounds, relative scoring, 150 verified events, timeline reveal, podium.
+**MVP:** 5 rounds, relative scoring with the order bonus, 150 verified events, timeline reveal, podium.
 
-**Later:** order bonus, themed packs ("music history", "space race"), a Screen-mode pass-the-phone variant, and a sister game "Map Drop" that reuses the scoring for distances.
+**Later:** themed packs ("music history", "space race"), a Screen-mode pass-the-phone variant, and a sister game "Map Drop" that reuses the scoring for distances.
 
 ## Decisions
 
-D-130 and D-131 in [DECISIONS.md](../../docs/DECISIONS.md#gap-years).
-
-## Open questions
-
-Settle these when the spec is expanded at the start of Phase 1:
-
-- **Content mode and ratings.** The content guide says every entry carries a `rating`, but `HistEvent` has no `rating` field. Either add `rating` (probably all `family`) and list `["family"]` in `game.json`, or exempt this game from the rating rule.
-- **Players.** At a glance says 2–12, but edge cases allow a 1-player practice run. Decide whether `players.min` is 1.
-- **`orderBonus` default.** The settings list it as on/off, the scoring rules use it, and the MVP lists the order bonus as Later. Pick a default (probably off for the MVP).
+D-130 to D-134 in [DECISIONS.md](../../docs/DECISIONS.md#gap-years).

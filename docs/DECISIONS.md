@@ -41,8 +41,8 @@ Small clarifications that don't change behavior (typos, a missing route in a tab
 
 | Tool / library | Version (2026-11-04) | Notes |
 | -------------- | -------------------- | ----- |
-| Node.js | 26 LTS (26.13.0) | Pinned in `.node-version` and `engines` |
-| pnpm | 12.16.1 | Pinned in `packageManager` |
+| Node.js | 26 LTS (26.13.0) | Pinned in `.node-version` and `engines`; installed with fnm, not made the default |
+| pnpm | 12.16.1 | Pinned in `packageManager`; the installed pnpm switches to it automatically |
 | Turborepo (`turbo`) | 2.11 | |
 | Next.js | 16.4 | App Router |
 | React / React DOM | 19.3 | |
@@ -71,6 +71,7 @@ Small clarifications that don't change behavior (typos, a missing route in a tab
 | D-101 | 2026-11-04 | The presenter sees "up next" on their own phone. | Accepted |
 | D-102 | 2026-11-04 | The Picker sees each option's raw content, then a slide preview after choosing. | Accepted |
 | D-103 | 2026-11-04 | The MVP rotates photo and text slides; Chart slides come later. | Accepted |
+| D-104 | 2026-11-11 | Ratings, scoring and the podium (`rate` and `results` phases) are Later, not MVP. A talk ends after `outro`. | Accepted |
 
 ### Signal Chain
 
@@ -78,6 +79,7 @@ Small clarifications that don't change behavior (typos, a missing route in a tab
 | -- | ---- | -------- | ------ |
 | D-110 | 2026-11-04 | Roles use neutral names (Seer, Relay, Operator). | Accepted |
 | D-111 | 2026-11-04 | The Seer sees the Operator's live progress by default (`seerSeesProgress`). | Accepted |
+| D-112 | 2026-11-11 | Defaults: `difficulty` easy, `noiseVolume` 0. | Accepted |
 
 ### Jam Room
 
@@ -85,6 +87,7 @@ Small clarifications that don't change behavior (typos, a missing route in a tab
 | -- | ---- | -------- | ------ |
 | D-120 | 2026-11-04 | A pure toy first, with no goals or scoring. Light group challenges can come later. | Accepted |
 | D-121 | 2026-11-04 | MVP sounds come from Tone.js synths only; sampled instruments need a checked license first. | Accepted |
+| D-122 | 2026-11-11 | WebRTCTransport is in the MVP, with Supabase batching as the fallback. | Accepted |
 
 ### Gap Years
 
@@ -92,6 +95,9 @@ Small clarifications that don't change behavior (typos, a missing route in a tab
 | -- | ---- | -------- | ------ |
 | D-130 | 2026-11-04 | The guess timer defaults to 30 s, configurable from 15 to 60 s (`guessMs`). | Accepted |
 | D-131 | 2026-11-04 | Every event carries a `source` URL; the validator rejects events without one. | Accepted |
+| D-132 | 2026-11-11 | Family-only game: every event has `rating: "family"`, `game.json` lists `["family"]`, and the picker is hidden. | Accepted |
+| D-133 | 2026-11-11 | Players 1–12; one player is a solo practice run. | Accepted |
+| D-134 | 2026-11-11 | The order bonus is worth +200, is on by default, and is in the MVP. | Accepted |
 
 ### Story Relay
 
@@ -99,3 +105,11 @@ Small clarifications that don't change behavior (typos, a missing route in a tab
 | -- | ---- | -------- | ------ |
 | D-140 | 2026-11-04 | Non-competitive, with no storyteller vote. | Accepted |
 | D-141 | 2026-11-04 | The whole game works with zero transcripts; the mic is optional and off by default. | Accepted |
+
+### Fit Check
+
+| ID | Date | Decision | Status |
+| -- | ---- | -------- | ------ |
+| D-150 | 2026-11-12 | Two variants under one game, both in the MVP: **Dress up** (dress a character for a prompt, the room votes on the best outfit) and **Name the fit** (a random outfit, everyone writes a descriptor, the room votes on the best one). The variant is a lobby setting for the whole game. | Accepted |
+| D-151 | 2026-11-12 | Name the fit reuses the 1v1 / Battle Royale matchups. Each matchup gets one fully random outfit (random wear mode, one random item per slot, filtered by content mode); there are no prompts. | Accepted |
+| D-152 | 2026-11-12 | Fit Check is the lead game of Phase 5, built before Bluff Fill, Odd One Out and Ballpark. It builds the shared voting module and free-text input. | Accepted |

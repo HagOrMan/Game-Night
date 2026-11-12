@@ -108,14 +108,10 @@ Tone.js; audio unlock on first tap (`useAudioUnlock`); on iPhone, setting `navig
 
 ## Scope
 
-**MVP:** host sound, Supabase batching, Keys (chords), Bass (scale), Drums, 3 progressions, lanes visual.
+**MVP:** host sound, WebRTC with the Supabase batching fallback, Keys (chords), Bass (scale), Drums, 3 progressions, lanes visual.
 
-**Later:** WebRTC, Free mode, Lead and Theremin, recording, phone sound modes, a per-player looper, "song form" with verse and chorus sections.
+**Later:** Free mode, Lead and Theremin, recording, phone sound modes, a per-player looper, "song form" with verse and chorus sections.
 
 ## Decisions
 
-D-120 and D-121 in [DECISIONS.md](../../docs/DECISIONS.md#jam-room).
-
-## Open questions
-
-- The MVP list puts WebRTC in Later, but Phase 4's deliverables and its gate ("4 phones jam for 5 min with no dropouts") include WebRTCTransport. Decide before Phase 4 whether WebRTC is in this game's MVP.
+D-120 to D-122 in [DECISIONS.md](../../docs/DECISIONS.md#jam-room).

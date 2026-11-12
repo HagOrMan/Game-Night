@@ -18,13 +18,13 @@ Effort is S (a weekend), M (a few weekends) or L.
 | Majority Rules   | Party  | Quick-fire questions ("Best pizza topping?"); score by matching what most people said.                                                    | Text input, fuzzy matching, voting                         | S      |
 | Who Said It      | Party  | Everyone answers a personal prompt anonymously; guess who wrote each answer.                                                              | Text input, voting                                         | S      |
 
-**Suggested next three (Phase 5):** Bluff Fill, Odd One Out (the best pure social game here, and tiny), and Ballpark (nearly free once Gap Years exists).
+**Suggested next three (Phase 5, after Fit Check):** Bluff Fill, Odd One Out (the best pure social game here, and tiny), and Ballpark (nearly free once Gap Years exists).
 
 ## Shared systems worth building once
 
 Several games want these, so each is built once in a shared package the first time a game needs it:
 
-- **Voting module:** Odd One Out, Bluff Fill, Who Said It, Hot Seat Debate, Slide Roulette ratings.
-- **Free-text input** with profanity masking and fuzzy matching: Bluff Fill, Majority Rules, Who Said It.
+- **Voting module:** Fit Check (built there first), Odd One Out, Bluff Fill, Who Said It, Hot Seat Debate, Slide Roulette ratings.
+- **Free-text input** with profanity masking and fuzzy matching: Fit Check's Name the fit (built there first, without fuzzy matching), Bluff Fill, Majority Rules, Who Said It.
 - **Drawing canvas with stroke streaming:** Signal Chain, Sketch Telephone.
 - **Relative-error scorer:** Gap Years, Ballpark, Map Drop.

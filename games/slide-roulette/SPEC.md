@@ -43,7 +43,7 @@ At the start of a round the host shuffles all players into a single loop, P1 →
 | ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Presenter    | Phone  | **Up next**: the slide the Picker has locked in (or "Picker is choosing…"); seconds left on this slide; slides left; a Skip button (1 per talk)                                                                     |
 | Slide Picker | Phone  | Current slide thumbnail, countdown, and 3 option cards showing the raw content (the photo, or the line of text). After a tap, a preview of that option as a slide; they can change their pick until the slide flips |
-| Audience     | Phone  | Reaction buttons during the talk, a rating form after                                                                                                                                                               |
+| Audience     | Phone  | Reaction buttons during the talk (a rating form after, later)                                                                                                                                                       |
 
 The TV only ever shows the current slide: never the options and never what's coming up.
 
@@ -55,9 +55,14 @@ The TV only ever shows the current slide: never the options and never what's com
 | `assign`   | "Presenter: Sam · Picker: Ana"                            | Each phone shows its role for this talk                                      | 4 s                                                        | `title`               |
 | `title`    | Generated talk title                                      | Picker gets the first options (photos); presenter sees the title and up next | `titleMs`                                                  | `slide`               |
 | `slide` ×N | Current slide + thin progress bar; floating reactions     | Picker chooses; presenter sees up next + Skip; audience reacts               | `slideMs`; if nothing picked, a random option from the set | `slide` or `outro`    |
-| `outro`    | "Thank you! Questions?"                                   | —                                                                            | 8 s                                                        | `rate`                |
-| `rate`     | "Rate the talk", live tally                               | Audience: 1–5 stars on Commitment and Chaos                                  | All voted or 20 s                                          | `assign` or `results` |
-| `results`  | Podium: best presenter, best picker (most-reacted slides) | Your placing                                                                 | Host                                                       | `lobby`               |
+| `outro`    | "Thank you! Questions?"                                   | —                                                                            | 8 s                                                        | `assign`, or `lobby` after the last talk |
+
+**Later (D-104):** ratings and the podium add two phases after `outro`:
+
+| Phase      | Host screen                                               | Phones                                      | Ends when         | Next                  |
+| ---------- | --------------------------------------------------------- | ------------------------------------------- | ----------------- | --------------------- |
+| `rate`     | "Rate the talk", live tally                               | Audience: 1–5 stars on Commitment and Chaos | All voted or 20 s | `assign` or `results` |
+| `results`  | Podium: best presenter, best picker (most-reacted slides) | Your placing                                | Host              | `lobby`               |
 
 ## Slide rotation
 
@@ -105,7 +110,7 @@ Once per talk (setting `presenterSkips`), the presenter taps Skip during a slide
 | `pick { optionId }`          | Picker    | `title`, `slide`        | Sets or changes the next slide; the presenter's up next updates                |
 | `skip`                       | Presenter | `slide`, skips left > 0 | Current slide becomes the blank slide for its remaining time                   |
 | `react { emoji }`            | Audience  | `slide`                 | Floating reaction on the TV; capped at 2 per second per phone, sent in batches |
-| `rate { commitment, chaos }` | Audience  | `rate`                  | 1–5 stars each                                                                 |
+| `rate { commitment, chaos }` | Audience  | `rate` (later)          | 1–5 stars each                                                                 |
 
 ## Views
 
@@ -128,15 +133,15 @@ Once per talk (setting `presenterSkips`), the presenter taps Skip during a slide
 
 `title` and `slide` timers freeze; the picker's choice stays locked in; Skip and reactions are disabled while paused. After the 3-2-1, the current slide (or blank slide) gets its remaining time.
 
-## Scoring (light)
+## Scoring (light, later)
 
-Presenter score = average stars × 100. Picker score = reactions received during slides they chose.
+The MVP has no scoring. With ratings and the podium: presenter score = average stars × 100. Picker score = reactions received during slides they chose.
 
 ## Edge cases
 
 - Picker disconnects: `onPickerLost` decides (pause by default, or auto-pick).
 - Presenter's phone disconnects: pause; the host can tap "Continue without presenter phone", which hides up next and Skip for that talk.
-- Only 2 players: no audience and no ratings; they pick for each other.
+- Only 2 players: no audience; they pick for each other.
 - No phones at all: Hybrid mode deals a fully random deck; the host taps to start each talk.
 
 ## Look
@@ -151,8 +156,4 @@ A parody of office slideware. Four skins (corporate blue, retro WordArt, startup
 
 ## Decisions
 
-D-100 to D-103 in [DECISIONS.md](../../docs/DECISIONS.md#slide-roulette).
-
-## Open questions
-
-- The flow table includes `rate` and `results` (ratings and podium), but the scope lists ratings and podium as Later. Decide which before Phase 2.
+D-100 to D-104 in [DECISIONS.md](../../docs/DECISIONS.md#slide-roulette).

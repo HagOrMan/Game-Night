@@ -70,11 +70,11 @@ Difficulty sets the target length and the task pool. A three-finger tap clears t
 | Key | Default | Range |
 | --- | ------- | ----- |
 | `taskMs` | 90000 | 45000–180000 |
-| `difficulty` | — | easy, medium, hard |
+| `difficulty` | easy | easy, medium, hard |
 | `tasks` | all MVP tasks | multi-select from the task list |
 | `teams` | auto | auto, 1, 2 |
 | `relayNoise` | on | on, off |
-| `noiseVolume` | — | 0–1 |
+| `noiseVolume` | 0 | 0–1 |
 | `rotationsPerPlayer` | 1 | 1–3 |
 | `seerSeesProgress` | on | on, off |
 
@@ -112,8 +112,4 @@ Pointer Events with `touch-action: none` on a full-screen black canvas; Fullscre
 
 ## Decisions
 
-D-110 and D-111 in [DECISIONS.md](../../docs/DECISIONS.md#signal-chain).
-
-## Open questions
-
-- `difficulty` and `noiseVolume` have no defaults yet. Set them when the spec is expanded before Phase 3.
+D-110 to D-112 in [DECISIONS.md](../../docs/DECISIONS.md#signal-chain).

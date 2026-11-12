@@ -29,7 +29,7 @@ Every game declares one or more of these:
 | Mode   | Devices                                               | Where game state lives           | Network          | Fits                                                                 |
 | ------ | ----------------------------------------------------- | -------------------------------- | ---------------- | -------------------------------------------------------------------- |
 | Screen | One shared screen (TV or laptop), everyone around it  | That browser only                | None             | Story Relay, Forehead                                                |
-| Party  | One host screen + each player's phone as a controller | Host browser, mirrored to phones | Realtime channel | Gap Years, Slide Roulette, Signal Chain                              |
+| Party  | One host screen + each player's phone as a controller | Host browser, mirrored to phones | Realtime channel | Gap Years, Slide Roulette, Signal Chain, Fit Check                   |
 | Hybrid | Plays as Screen; phones can join for extra roles      | Host browser                     | Optional         | Jam Room (solo keyboard or phones), Slide Roulette audience reactions |
 
 ## Glossary
@@ -53,6 +53,7 @@ Every game declares one or more of these:
 | Slide Roulette | Party, Hybrid | [games/slide-roulette/SPEC.md](../games/slide-roulette/SPEC.md) | 2 |
 | Signal Chain | Party | [games/signal-chain/SPEC.md](../games/signal-chain/SPEC.md) | 3 |
 | Jam Room | Party, Screen | [games/jam-room/SPEC.md](../games/jam-room/SPEC.md) | 4 |
+| Fit Check (Dress up, Name the fit) | Party | [games/fit-check/SPEC.md](../games/fit-check/SPEC.md) | 5 (leads) |
 
 More candidates are in [IDEAS.md](IDEAS.md).
 
